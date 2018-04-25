@@ -1,5 +1,5 @@
 /*!
- * stackTrace v1.0.3
+ * stackTrace v1.0.4
  * A simple and easy jQuery plugin for highlighting stack traces
  * License : MIT
  * Author : Stanescu Eduard-Dan (http://eduardstanescu.tech)
@@ -24,6 +24,9 @@
         }, options);
 
         return this.each(function() {
+
+            // Transform text to html
+            $(this).html($(this).text());
 
             let stacktrace = $(this).text(),
                 lines = stacktrace.split('\n'),
