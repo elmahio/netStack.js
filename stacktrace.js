@@ -1,6 +1,6 @@
 /*!
  * stackTrace v1.0.4
- * A simple and easy jQuery plugin for highlighting stack traces
+ * A simple and easy jQuery plugin for highlighting .NET stack traces
  * License : MIT
  * Author : Stanescu Eduard-Dan (http://eduardstanescu.tech)
  */
