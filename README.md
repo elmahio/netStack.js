@@ -1,5 +1,6 @@
 # stacktrace.js
 A simple and easy jQuery plugin for highlighting .NET stack traces
+`version 1.0.4`
 
 #### Demo
 ![stackTrace.js - demo](example.jpg)
