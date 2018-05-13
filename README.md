@@ -1,5 +1,5 @@
 # stacktrace.js
-![version](https://img.shields.io/badge/Latest%20version-1.0.4-1abc9c.svg?style=flat-square) 
+![version](https://img.shields.io/badge/Latest%20version-1.0.5-1abc9c.svg?style=flat-square) 
 ![license](https://img.shields.io/hexpm/l/plug.svg?style=flat-square)
 
 A simple and easy jQuery plugin for highlighting .NET stack traces
