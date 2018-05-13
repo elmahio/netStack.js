@@ -2,14 +2,14 @@
  * stackTrace v1.0.4
  * A simple and easy jQuery plugin for highlighting .NET stack traces
  * License : MIT
- * Author : Stanescu Eduard-Dan (https://elmah.io)
+ * Author : Stanescu Eduard-Dan (http://eduardstanescu.tech)
  */
 (function($) {
     'use strict';
 
     $.fn.stackTrace = function(options) {
 
-        let settings = $.extend({
+        var settings = $.extend({
 
             // Default values for classes
             frame: 'st-frame',
@@ -28,34 +28,34 @@
             // Transform text to html
             $(this).html($(this).text());
 
-            let stacktrace = $(this).text(),
+            var stacktrace = $(this).text(),
                 lines = stacktrace.split('\n'),
                 clone = '';
 
-            for (let i = 0, j = lines.length; i < j; ++i) {
+            for (var i = 0, j = lines.length; i < j; ++i) {
 
-                let li = lines[i],
+                var li = lines[i],
                 	hli = new RegExp('\\bat.*\\)');
 
                 // Ignore first line from highlighting & comments lines
                 if (hli.test(lines[i]) && (i !== 0)) {
 
                     // Frame
-                    let regFrame = new RegExp('\\bat.*\\)'),
+                    var regFrame = new RegExp('\\bat.*\\)'),
                         partsFrame = String(regFrame.exec(lines[i]));
                     partsFrame = partsFrame.replace('at ', '');
 
                     // Frame -> ParameterList
-                    let regParamList = new RegExp('\\(.*\\)'),
+                    var regParamList = new RegExp('\\(.*\\)'),
                         partsParamList = String(regParamList.exec(lines[i]));
 
                     // Frame -> Params
-                    let partsParams = partsParamList.replace('(', '').replace(')', ''),
+                    var partsParams = partsParamList.replace('(', '').replace(')', ''),
                         arrParams = partsParams.split(', '),
                         stringParam = '';
 
-                    for (let x = 0, y = arrParams.length; x < y; ++x) {
-                        let theParam = '',
+                    for (var x = 0, y = arrParams.length; x < y; ++x) {
+                        var theParam = '',
                             param = arrParams[x].split(' '),
                             paramType = param[0],
                             paramName = param[1];
@@ -70,22 +70,22 @@
                     stringParam = '<span class="' + settings.paramsList + '">' + '(' + stringParam + ')' + '</span>';
 
                     // Frame -> Type & Method
-                    let partsTypeMethod = partsFrame.replace(partsParamList, ''),
+                    var partsTypeMethod = partsFrame.replace(partsParamList, ''),
                         arrTypeMethod = partsTypeMethod.split('.'),
                         method = arrTypeMethod.pop(),
                         type = partsTypeMethod.replace('.' + method, ''),
                         stringTypeMethod = '<span class="' + settings.type + '">' + type + '</span>.' + '<span class="' + settings.method + '">' + method + '</span>';
 
                     // Construct Frame
-                    let newPartsFrame = partsFrame.replace(partsParamList, stringParam).replace(partsTypeMethod, stringTypeMethod);
+                    var newPartsFrame = partsFrame.replace(partsParamList, stringParam).replace(partsTypeMethod, stringTypeMethod);
 
                     // Line
-                    let regLine = new RegExp('\\b:line.*'),
+                    var regLine = new RegExp('\\b:line.*'),
                         partsLine = String(regLine.exec(lines[i]));
                     partsLine = partsLine.replace(':', '');
 
                     // File
-                    let regFile = new RegExp('\\bin.*$'),
+                    var regFile = new RegExp('\\bin.*$'),
                         partsFile = String(regFile.exec(lines[i]));
                     partsFile = partsFile.replace('in ', '').replace(':' + partsLine, '');
 
