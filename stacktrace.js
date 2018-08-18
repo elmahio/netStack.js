@@ -1,7 +1,7 @@
 /*!
  * stackTrace v1.0.5
  * A simple and easy jQuery plugin for highlighting .NET stack traces
- * License : MIT
+ * License : Apache 2
  * Author : Stanescu Eduard-Dan (https://elmah.io)
  */
 (function($) {
