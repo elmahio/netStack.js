@@ -1,5 +1,5 @@
 # netStack.js
-![version](https://img.shields.io/badge/Latest%20version-1.0.5-1abc9c.svg?style=flat-square) 
+[![npm](https://img.shields.io/npm/v/netstack.js.svg)](https://www.npmjs.com/package/netstack.js)
 ![license](https://img.shields.io/hexpm/l/plug.svg?style=flat-square)
 
 A simple and easy jQuery plugin for highlighting .NET stack traces
