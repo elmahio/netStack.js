@@ -1,5 +1,5 @@
 {
-  "name": "netstack",
+  "name": "netstack.js",
   "version": "1.0.7",
   "description": "A simple and easy jQuery plugin for highlighting .NET stack traces",
   "main": "netstack.js",
