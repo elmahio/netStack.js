@@ -34,8 +34,8 @@
         var languages = [
         	{ name: 'english', at: 'at', in: 'in', line: 'line' },
         	{ name: 'danish', at: 'ved', in: 'i', line: 'linje' },
-		{ name: 'german', at: 'bei', in: 'in', line: 'Zeile' },
-		{ name: 'french', at: 'à', in: 'dans', line: 'ligne' }
+		{ name: 'german', at: 'bei', in: 'in', line: 'Zeile' }
+		/* { name: 'french', at: 'à', in: 'dans', line: 'ligne' } */
         ];
 
         return this.each(function() {
