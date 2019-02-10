@@ -1,5 +1,5 @@
 /*!
- * netStack v1.0.7
+ * netStack v1.0.9
  * A simple and easy jQuery plugin for highlighting .NET stack traces
  * License : Apache 2
  * Author : Stanescu Eduard-Dan (https://elmah.io)
@@ -11,7 +11,7 @@
 
     	function search(nameKey, myArray){
 		    for (var i=0; i < myArray.length; i++) {
-		        if (myArray[i].at === nameKey) {
+		        if (myArray[i].name === nameKey) {
 		            return myArray[i];
 		        }
 		    }
@@ -34,8 +34,7 @@
         var languages = [
         	{ name: 'english', at: 'at', in: 'in', line: 'line' },
         	{ name: 'danish', at: 'ved', in: 'i', line: 'linje' },
-		{ name: 'german', at: 'bei', in: 'in', line: 'Zeile' }
-		/* { name: 'french', at: 'à', in: 'dans', line: 'ligne' } */
+			{ name: 'german', at: 'bei', in: 'in', line: 'Zeile' }
         ];
 
         return this.each(function() {
@@ -45,24 +44,40 @@
 
             var stacktrace = $(this).text(),
                 lines = stacktrace.split('\n'),
+                lang = '',
                 clone = '';
 
-            // detect language
-            var firstLine = lines[1],
-            	regLang = new RegExp('([\\w]+)'),
-            	firstWord = regLang.exec(firstLine)[0],
-            	selectedLanguage = search(firstWord, languages);
+            // search for language
+            for (var i = 0, j = lines.length; i < j; ++i) {
+                if(lang === '') {
+                    var line = lines[i];
+                    var english = new RegExp('\\bat .*\\)'),
+                        danish = new RegExp('\\bved .*\\)'),
+                        german = new RegExp('\\bbei .*\\)');
+
+                    if(english.test(lines[i])) {
+                        lang = 'english';
+                    } else if (danish.test(lines[i])) {
+                        lang = 'danish';
+                    } else if (german.test(lines[i])) {
+                        lang = 'german';
+                    }
+                }
+            }
+
+            if (lang === '') return;
+
+            var selectedLanguage = search(lang, languages);
 
             for (var i = 0, j = lines.length; i < j; ++i) {
 
                 var li = lines[i],
-                	hli = new RegExp('\\b'+selectedLanguage['at']+'.*\\)');
+                    hli = new RegExp('\\b'+selectedLanguage['at']+' .*\\)');
 
-                // Ignore first line from highlighting & comments lines
-                if (hli.test(lines[i]) && (i !== 0)) {
+                if (hli.test(lines[i])) {
 
                     // Frame
-                    var regFrame = new RegExp('\\b'+selectedLanguage['at']+'.*\\)'),
+                    var regFrame = new RegExp('\\b'+selectedLanguage['at']+' .*\\)'),
                         partsFrame = String(regFrame.exec(lines[i]));
                     partsFrame = partsFrame.replace(selectedLanguage['at']+' ', '');
 
@@ -114,12 +129,21 @@
                         .replace(partsFile, '<span class="' + settings.file + '">' + partsFile + '</span>')
                         .replace(partsLine, '<span class="' + settings.line + '">' + partsLine + '</span>');
 
-                }
-
-                if (lines.length - 1 == i) {
-                    clone += li;
+                    if (lines.length - 1 == i) {
+                        clone += li;
+                    } else {
+                        clone += li + '\n';
+                    }
                 } else {
-                    clone += li + '\n';
+                    if((lines[i].trim()).length) {
+                        li = lines[i];
+
+                        if (lines.length - 1 == i) {
+                            clone += li;
+                        } else {
+                            clone += li + '\n';
+                        }
+                    }
                 }
             }
 
