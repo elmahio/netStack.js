@@ -1,5 +1,5 @@
 /*!
- * netStack v1.0.9
+ * netStack v1.1.0
  * A simple and easy jQuery plugin for highlighting .NET stack traces
  * License : Apache 2
  * Author : Stanescu Eduard-Dan (https://elmah.io)
@@ -77,7 +77,7 @@
                 if (hli.test(lines[i])) {
 
                     // Frame
-                    var regFrame = new RegExp('\\b'+selectedLanguage['at']+' .*\\)'),
+                    var regFrame = new RegExp('\\b'+selectedLanguage['at']+' .*?\\)'),
                         partsFrame = String(regFrame.exec(lines[i]));
                     partsFrame = partsFrame.replace(selectedLanguage['at']+' ', '');
 
