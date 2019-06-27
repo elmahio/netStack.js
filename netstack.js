@@ -17,9 +17,32 @@
 		    }
 		}
 
+        function formatException(exceptionMessage, at_language){
+            var result = exceptionMessage || '';
+            var searchReplaces = [
+                {
+                    find: new RegExp("   "+at_language, "g"),
+                    repl: '\r\n   '+at_language},
+                {
+                    find: new RegExp(" ---> ", "g"),
+                    repl: '\r\n ---> '},
+                {
+                    find: new RegExp("\\) "+at_language+" ", "g"),
+                    repl: '\r\n '+at_language+' '},
+                {
+                    find:/ --- End of inner exception stack trace ---/g,
+                    repl: '\r\n   --- End of inner exception stack trace ---'}
+            ]
+            searchReplaces.forEach(function(item){
+                result = result.replace(item.find, item.repl);
+            });
+            return result;
+        };
+
         var settings = $.extend({
 
             // Default values for classes
+            prettyprint: false,
             frame: 'st-frame',
             type: 'st-type',
             method: 'st-method',
@@ -68,6 +91,12 @@
             if (lang === '') return;
 
             var selectedLanguage = search(lang, languages);
+
+            // Pritty print result if is set to true
+            if (settings.prettyprint) {
+                stacktrace = formatException(stacktrace, selectedLanguage['at']);
+                lines = stacktrace.split('\n');
+            }
 
             for (var i = 0, j = lines.length; i < j; ++i) {
 
