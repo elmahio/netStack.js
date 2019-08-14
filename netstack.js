@@ -145,7 +145,7 @@
                     var newPartsFrame = partsFrame.replace(partsParamList, stringParam).replace(partsTypeMethod, stringTypeMethod);
 
                     // Line
-                    var regLine = new RegExp('\\b:'+selectedLanguage['line']+'.*'),
+                    var regLine = new RegExp('\\b'+selectedLanguage['in']+'\\s.*$'),
                         partsLine = String(regLine.exec(lines[i]));
                     partsLine = partsLine.replace(':', '');
 
