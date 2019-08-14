@@ -152,7 +152,6 @@
                     // File
                     var regFile = new RegExp('\\b'+selectedLanguage['in']+'\\s.*$'),
                         partsFile = String(regFile.exec(lines[i]));
-                    console.log(partsFile);
                     partsFile = partsFile.replace(selectedLanguage['in']+' ', '').replace(':' + partsLine, '');
 
                     li = li.replace(partsFrame, '<span class="' + settings.frame + '">' + newPartsFrame + '</span>')
