@@ -145,12 +145,12 @@
                     var newPartsFrame = partsFrame.replace(partsParamList, stringParam).replace(partsTypeMethod, stringTypeMethod);
 
                     // Line
-                    var regLine = new RegExp('\\b'+selectedLanguage['in']+'\\s.*$'),
+                    var regLine = new RegExp('\\b'+selectedLanguage['in']+'.*$'),
                         partsLine = String(regLine.exec(lines[i]));
                     partsLine = partsLine.replace(':', '');
 
                     // File
-                    var regFile = new RegExp('\\b'+selectedLanguage['in']+'.*$'),
+                    var regFile = new RegExp('\\b'+selectedLanguage['in']+'\\s.*$'),
                         partsFile = String(regFile.exec(lines[i]));
                     partsFile = partsFile.replace(selectedLanguage['in']+' ', '').replace(':' + partsLine, '');
 
