@@ -42,7 +42,7 @@
         var settings = $.extend({
 
             // Default values for classes
-            prettyprint: false,
+            prittyprint: false,
             frame: 'st-frame',
             type: 'st-type',
             method: 'st-method',
@@ -93,7 +93,7 @@
             var selectedLanguage = search(lang, languages);
 
             // Pritty print result if is set to true
-            if (settings.prettyprint) {
+            if (settings.prittyprint) {
                 stacktrace = formatException(stacktrace, selectedLanguage['at']);
                 lines = stacktrace.split('\n');
             }
@@ -145,13 +145,14 @@
                     var newPartsFrame = partsFrame.replace(partsParamList, stringParam).replace(partsTypeMethod, stringTypeMethod);
 
                     // Line
-                    var regLine = new RegExp('\\b'+selectedLanguage['in']+'.*$'),
+                    var regLine = new RegExp('\\b:'+selectedLanguage['line']+'.*'),
                         partsLine = String(regLine.exec(lines[i]));
                     partsLine = partsLine.replace(':', '');
 
                     // File
                     var regFile = new RegExp('\\b'+selectedLanguage['in']+'\\s.*$'),
                         partsFile = String(regFile.exec(lines[i]));
+                    console.log(partsFile);
                     partsFile = partsFile.replace(selectedLanguage['in']+' ', '').replace(':' + partsLine, '');
 
                     li = li.replace(partsFrame, '<span class="' + settings.frame + '">' + newPartsFrame + '</span>')
