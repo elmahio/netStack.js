@@ -20,7 +20,6 @@ $('.stacktrace').netStack();
 #### Default values for classes
 ```
 $('.stacktrace').netStack({
-    prettyprint: false,
     frame: 'st-frame',
     type: 'st-type',
     method: 'st-method',
