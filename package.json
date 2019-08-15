@@ -15,5 +15,13 @@
   "bugs": {
     "url": "https://github.com/elmahio/netStack.js/issues"
   },
-  "homepage": "https://github.com/elmahio/netStack.js#readme"
+  "homepage": "https://github.com/elmahio/netStack.js#readme",
+  "keywords": [
+    ".NET",
+    "stacktrace",
+    "formatter",
+    "jQuery",
+    "plugin",
+    "elmah.io"
+  ]
 }
