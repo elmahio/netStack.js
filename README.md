@@ -8,7 +8,7 @@ A simple and easy jQuery plugin for highlighting .NET stack traces
 [![English](images/EN.png)](#) [![Danish](images/DK.png)](#) [![German](images/DE.png)](#)
 
 #### Demo
-[![netStack.js - demo](images/example.png)](https://elmah.io/tools/stack-trace-formatter/)
+[![netStack.js - demo](images/example.jpg)](https://elmah.io/tools/stack-trace-formatter/)
 
 [Stack Trace Formatter - Online pretty print of .NET stack traces](https://elmah.io/tools/stack-trace-formatter/)
 
