@@ -31,6 +31,16 @@ $('.stacktrace').netStack({
 });
 ```
 
+#### Options
+##### prettyprint: boolean
+Default: false. 
+Pretty prints your stacktrace.
+```
+$('.stacktrace').netStack({
+    prettyprint: true
+});
+```
+
 #### Ready to go css
 ```
 pre, code {background-color:#333; color: #ffffff;}
