@@ -42,7 +42,7 @@
         var settings = $.extend({
 
             // Default values for classes
-            prittyprint: false,
+            prettyprint: false,
             frame: 'st-frame',
             type: 'st-type',
             method: 'st-method',
@@ -93,7 +93,7 @@
             var selectedLanguage = search(lang, languages);
 
             // Pritty print result if is set to true
-            if (settings.prittyprint) {
+            if (settings.prettyprint) {
                 stacktrace = formatException(stacktrace, selectedLanguage['at']);
                 lines = stacktrace.split('\n');
             }
