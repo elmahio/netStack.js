@@ -1,11 +1,16 @@
 # netStack.js
 [![npm](https://img.shields.io/npm/v/netstack.js.svg)](https://www.npmjs.com/package/netstack.js)
-![license](https://img.shields.io/hexpm/l/plug.svg?style=flat-square)
+[![license](https://img.shields.io/hexpm/l/plug.svg?style=flat-square)](#)
 
 A simple and easy jQuery plugin for highlighting .NET stack traces
 
+#### Stacktrace - Language support
+[![English](images/EN.png)](#) [![Danish](images/DK.png)](#) [![German](images/DE.png)](#)
+
 #### Demo
-![netStack.js - demo](example.jpg)
+![netStack.js - demo](images/stacktrace.png)
+
+[Stack Trace Formatter - Online pretty print of .NET stack traces](https://elmah.io/tools/stack-trace-formatter/)
 
 #### Initialization
 ```
@@ -15,6 +20,7 @@ $('.stacktrace').netStack();
 #### Default values for classes
 ```
 $('.stacktrace').netStack({
+    prettyprint: false,
     frame: 'st-frame',
     type: 'st-type',
     method: 'st-method',
