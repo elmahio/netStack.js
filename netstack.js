@@ -1,5 +1,5 @@
 /*!
- * netStack v1.0.11
+ * netStack v1.0.12
  * A simple and easy jQuery plugin for highlighting .NET stack traces
  * License : Apache 2
  * Author : Stanescu Eduard-Dan (https://elmah.io)
@@ -31,7 +31,8 @@
                     repl: '\r\n '+at_language+' '},
                 {
                     find:/ --- End of inner exception stack trace ---/g,
-                    repl: '\r\n   --- End of inner exception stack trace ---'}
+                    repl: '\r\n   --- End of inner exception stack trace ---'
+                }
             ]
             searchReplaces.forEach(function(item){
                 result = result.replace(item.find, item.repl);
@@ -62,11 +63,11 @@
 
         return this.each(function() {
 
-            // Transform text to html
-            $(this).html($(this).text());
+            // Get the stacktrace, sanitize it, and split it into lines
 
             var stacktrace = $(this).text(),
-                lines = stacktrace.split('\n'),
+                sanitizedStack = stacktrace.replace(/</g, '&lt;').replace(/>/g, '&gt;'),
+                lines = sanitizedStack.split('\n'),
                 lang = '',
                 clone = '';
 
@@ -94,8 +95,8 @@
 
             // Pritty print result if is set to true
             if (settings.prettyprint) {
-                stacktrace = formatException(stacktrace, selectedLanguage['at']);
-                lines = stacktrace.split('\n');
+                sanitizedStack = formatException(sanitizedStack, selectedLanguage['at']);
+                lines = sanitizedStack.split('\n');
             }
 
             for (var i = 0, j = lines.length; i < j; ++i) {
@@ -157,6 +158,8 @@
                     li = li.replace(partsFrame, '<span class="' + settings.frame + '">' + newPartsFrame + '</span>')
                         .replace(partsFile, '<span class="' + settings.file + '">' + partsFile + '</span>')
                         .replace(partsLine, '<span class="' + settings.line + '">' + partsLine + '</span>');
+
+                    li = li.replace(/&lt;/g, '<span>&lt;</span>').replace(/&gt;/g, '<span>&gt;</span>');
 
                     if (lines.length - 1 == i) {
                         clone += li;
