@@ -1,8 +1,8 @@
 /*!
- * netStack v1.0.12
+ * netStack v1.0.13
  * A simple and easy jQuery plugin for highlighting .NET stack traces
  * License : Apache 2
- * Author : Stanescu Eduard-Dan (https://elmah.io)
+ * Author : https://elmah.io
  */
 (function($) {
     'use strict';
@@ -150,8 +150,8 @@
                         partsLine = String(regLine.exec(lines[i]));
                     partsLine = partsLine.replace(':', '');
 
-                    // File
-                    var regFile = new RegExp('\\b'+selectedLanguage['in']+'\\s.*$'),
+                    // File => (!) text requires multiline to exec regex, otherwise it will return null.
+                    var regFile = new RegExp('\\b'+selectedLanguage['in']+'\\s.*$', 'm'),
                         partsFile = String(regFile.exec(lines[i]));
                     partsFile = partsFile.replace(selectedLanguage['in']+' ', '').replace(':' + partsLine, '');
 
