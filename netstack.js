@@ -1,5 +1,5 @@
 /*!
- * netStack v1.0.13
+ * netStack v1.0.2
  * A simple and easy jQuery plugin for highlighting .NET stack traces
  * License : Apache 2
  * Author : https://elmah.io
@@ -21,7 +21,7 @@
             var result = exceptionMessage || '';
             var searchReplaces = [
                 {
-                    find: new RegExp("   "+at_language, "g"),
+                    find: new RegExp(" "+at_language, "g"),
                     repl: '\r\n   '+at_language},
                 {
                     find: new RegExp(" ---> ", "g"),
