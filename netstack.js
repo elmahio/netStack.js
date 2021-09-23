@@ -23,13 +23,16 @@
                 find: new RegExp(' ---> ', 'g'),
                 repl: '\r\n ---> '
             }, {
+                find: new RegExp(' ---&gt; ', 'g'),
+                repl: '\r\n ---&gt; '
+            }, {
                 find: new RegExp('--- End of inner exception stack trace ---', 'g'),
-                repl: '\r\n--- End of inner exception stack trace ---'
+                repl: '\r\n   --- End of inner exception stack trace ---'
             }, {
                 find: new RegExp('--- Конец трассировка стека из предыдущего расположения, где возникло исключение ---', 'g'),
-                repl: '\r\n--- Конец трассировка стека из предыдущего расположения, где возникло исключение ---'
+                repl: '\r\n   --- Конец трассировка стека из предыдущего расположения, где возникло исключение ---'
             }, {
-                find: new RegExp(`(\\s*?)${at_language} (.*?)\\((.*?)\\)`, 'g'),
+                find: new RegExp(`(\\s*?)${at_language} ([^-:]*?)\\((.*?)\\)`, 'g'),
                 repl: `\r\n   ${at_language} $2($3)`
             }]
 
