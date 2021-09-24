@@ -52,3 +52,8 @@ pre, code {background-color:#333; color: #ffffff;}
 .st-file {color:#f8b068;}
 .st-line {color:#ff4f68;}
 ```
+
+---
+### Acknowledgments
+
+* [IgoR-NiK](https://github.com/IgoR-NiK)
