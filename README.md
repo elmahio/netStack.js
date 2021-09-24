@@ -13,12 +13,12 @@ A simple and easy jQuery plugin for highlighting .NET stack traces
 [Stack Trace Formatter - Online pretty print of .NET stack traces](https://elmah.io/tools/stack-trace-formatter/)
 
 #### Initialization
-```
+```javascript
 $('.stacktrace').netStack();
 ```
 
 #### Default values for classes
-```
+```javascript
 $('.stacktrace').netStack({
     frame: 'st-frame',
     type: 'st-type',
@@ -35,7 +35,7 @@ $('.stacktrace').netStack({
 ##### prettyprint: boolean
 Default: false. 
 Pretty prints your stacktrace.
-```
+```javascript
 $('.stacktrace').netStack({
     prettyprint: true
 });
