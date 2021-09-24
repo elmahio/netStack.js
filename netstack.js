@@ -37,8 +37,8 @@
                     repl: null
                 },
                 {
-					find: new RegExp('(\\s*?)'+at_language+' ([^-:]*?)\\((.*?)\\)', 'g'),
-					repl: null
+                    find: new RegExp('(\\s*?)'+at_language+' ([^-:]*?)\\((.*?)\\)', 'g'),
+                    repl: null
                 }
             ]
             searchReplaces.forEach(function(item){
