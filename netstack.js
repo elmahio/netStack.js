@@ -1,5 +1,5 @@
 /*!
- * netStack v1.0.14
+ * netStack v1.0.16
  * A simple and easy jQuery plugin for highlighting .NET stack traces
  * License : Apache 2
  * Author : https://elmah.io
@@ -9,33 +9,44 @@
 
     $.fn.netStack = function(options) {
 
-    	function search(nameKey, myArray){
-		    for (var i=0; i < myArray.length; i++) {
-		        if (myArray[i].name === nameKey) {
-		            return myArray[i];
-		        }
-		    }
-		}
+        function search(nameKey, myArray){
+            for (var i=0; i < myArray.length; i++) {
+                if (myArray[i].name === nameKey) {
+                    return myArray[i];
+                }
+            }
+        }
+
+        function replacer(args, at_language) {
+            if(args[0].substr(0).match(/(-{3})/)) {
+                return '\r\n\   ' + args[0];
+            } else {
+                return '\r\n\   ' + at_language + ' ' + args[2] + '(' + args[3] + ')';
+            }
+        }
 
         function formatException(exceptionMessage, at_language){
             var result = exceptionMessage || '';
             var searchReplaces = [
                 {
-                    find: new RegExp(" "+at_language, "g"),
-                    repl: '\r\n   '+at_language},
+                    find: new RegExp(" ---&gt; ", "gm"),
+                    repl: '\r\n   ---&gt; '
+                },
                 {
-                    find: new RegExp(" ---> ", "g"),
-                    repl: '\r\n ---> '},
+                    find: /(-{3}\s)(.*?)(-{3})/gm,
+                    repl: null
+                },
                 {
-                    find: new RegExp("\\) "+at_language+" ", "g"),
-                    repl: '\r\n '+at_language+' '},
-                {
-                    find:/ --- End of inner exception stack trace ---/g,
-                    repl: '\r\n   --- End of inner exception stack trace ---'
+					find: new RegExp('(\\s*?)'+at_language+' ([^-:]*?)\\((.*?)\\)', 'g'),
+					repl: null
                 }
             ]
             searchReplaces.forEach(function(item){
-                result = result.replace(item.find, item.repl);
+                if(item.repl == null) {
+                    result = result.replace(item.find, function(){ return replacer(arguments, at_language); });
+                } else {
+                    result = result.replace(item.find, item.repl);
+                }
             });
             return result;
         };
@@ -56,9 +67,10 @@
         }, options);
 
         var languages = [
-        	{ name: 'english', at: 'at', in: 'in', line: 'line' },
-        	{ name: 'danish', at: 'ved', in: 'i', line: 'linje' },
-			{ name: 'german', at: 'bei', in: 'in', line: 'Zeile' }
+            { name: 'english', at: 'at', in: 'in', line: 'line' },
+            { name: 'danish', at: 'ved', in: 'i', line: 'linje' },
+            { name: 'german', at: 'bei', in: 'in', line: 'Zeile' },
+            { name: 'russian', at: 'в', in: 'в', line: 'строка' }
         ];
 
         return this.each(function() {
@@ -75,9 +87,10 @@
             for (var i = 0, j = lines.length; i < j; ++i) {
                 if(lang === '') {
                     var line = lines[i];
-                    var english = new RegExp('\\bat .*\\)'),
-                        danish = new RegExp('\\bved .*\\)'),
-                        german = new RegExp('\\bbei .*\\)');
+                    var english = new RegExp('(\\s*)at .*\\)'),
+                        danish = new RegExp('(\\s*)ved .*\\)'),
+                        german = new RegExp('(\\s*)bei .*\\)'),
+                        russian = new RegExp('(\\s*)в .*\\)');
 
                     if(english.test(lines[i])) {
                         lang = 'english';
@@ -85,6 +98,8 @@
                         lang = 'danish';
                     } else if (german.test(lines[i])) {
                         lang = 'german';
+                    } else if (russian.test(lines[i])) {
+                        lang = 'russian';
                     }
                 }
             }
@@ -102,13 +117,19 @@
             for (var i = 0, j = lines.length; i < j; ++i) {
 
                 var li = lines[i],
-                    hli = new RegExp('\\b'+selectedLanguage['at']+' .*\\)');
+                    hli = new RegExp('(\\S*)'+selectedLanguage['at']+' .*\\)');
+
 
                 if (hli.test(lines[i])) {
 
                     // Frame
-                    var regFrame = new RegExp('\\b'+selectedLanguage['at']+' .*?\\)'),
+                    var regFrame = new RegExp('(\\S*)'+selectedLanguage['at']+' .*?\\)'),
                         partsFrame = String(regFrame.exec(lines[i]));
+
+                    if(partsFrame.substr(partsFrame.length - 1) == ',') {
+                        partsFrame = partsFrame.slice(0, -1);
+                    }
+
                     partsFrame = partsFrame.replace(selectedLanguage['at']+' ', '');
 
                     // Frame -> ParameterList
@@ -148,11 +169,14 @@
                     // Line
                     var regLine = new RegExp('\\b:'+selectedLanguage['line']+'.*'),
                         partsLine = String(regLine.exec(lines[i]));
-                    partsLine = partsLine.replace(':', '');
+                    partsLine = partsLine.replace(':', '').trim();
+
+                    var fileLi = li.replace(selectedLanguage['at'] + " " + partsFrame, '').trim();
 
                     // File => (!) text requires multiline to exec regex, otherwise it will return null.
-                    var regFile = new RegExp('\\b'+selectedLanguage['in']+'\\s.*$', 'm'),
-                        partsFile = String(regFile.exec(lines[i]));
+                    var regFile = new RegExp(selectedLanguage['in']+'\\s.*$', 'm'),
+                        partsFile = String(regFile.exec(fileLi));
+
                     partsFile = partsFile.replace(selectedLanguage['in']+' ', '').replace(':' + partsLine, '');
 
                     li = li.replace(partsFrame, '<span class="' + settings.frame + '">' + newPartsFrame + '</span>')
