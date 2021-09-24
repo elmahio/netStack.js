@@ -42,7 +42,7 @@ $('.stacktrace').netStack({
 ```
 
 #### Ready to go css
-```
+```css
 pre, code {background-color:#333; color: #ffffff;}
 .st-type {color: #0a8472; font-weight: bolder;}
 .st-method {color: #70c9ba; font-weight: bolder;}
