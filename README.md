@@ -13,12 +13,12 @@ A simple and easy jQuery plugin for highlighting .NET stack traces
 [Stack Trace Formatter - Online pretty print of .NET stack traces](https://elmah.io/tools/stack-trace-formatter/)
 
 #### Initialization
-```
+```javascript
 $('.stacktrace').netStack();
 ```
 
 #### Default values for classes
-```
+```javascript
 $('.stacktrace').netStack({
     frame: 'st-frame',
     type: 'st-type',
@@ -35,14 +35,14 @@ $('.stacktrace').netStack({
 ##### prettyprint: boolean
 Default: false. 
 Pretty prints your stacktrace.
-```
+```javascript
 $('.stacktrace').netStack({
     prettyprint: true
 });
 ```
 
 #### Ready to go css
-```
+```css
 pre, code {background-color:#333; color: #ffffff;}
 .st-type {color: #0a8472; font-weight: bolder;}
 .st-method {color: #70c9ba; font-weight: bolder;}
@@ -52,3 +52,8 @@ pre, code {background-color:#333; color: #ffffff;}
 .st-file {color:#f8b068;}
 .st-line {color:#ff4f68;}
 ```
+
+---
+### Acknowledgments
+
+* [IgoR-NiK](https://github.com/IgoR-NiK)
