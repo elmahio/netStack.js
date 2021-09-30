@@ -31,10 +31,6 @@
             var result = exceptionMessage || '';
             var searchReplaces = [
                 {
-                    find: new RegExp(" ---&gt; ", "gm"),
-                    repl: '\r\n   ---&gt; '
-                },
-                {
                     find: /(-{3}\s)(.*?)(-{3})/gm,
                     repl: null
                 },
