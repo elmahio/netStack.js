@@ -1,5 +1,5 @@
 /*!
- * netStack v3.6.0
+ * netStack v1.1.0
  * A simple and easy jQuery plugin for highlighting .NET stack traces
  * License : Apache 2
  * Author : https://elmah.io
