@@ -9,6 +9,8 @@
 
     $.fn.netStack = function(options) {
 
+        var self = this;
+
         function search(nameKey, myArray){
             for (var i=0; i < myArray.length; i++) {
                 if (myArray[i].name === nameKey) {
@@ -201,6 +203,14 @@
                         }
                     }
                 }
+            }
+
+            self.getJSON = function () {
+                return JSON.stringify(clone);
+            }
+
+            self.getLanguage = function () {
+                return selectedLanguage ? selectedLanguage.name : null;
             }
 
             return $(this).html(clone);
