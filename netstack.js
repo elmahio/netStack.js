@@ -1,5 +1,5 @@
 /*!
- * netStack v1.1.0
+ * netStack v1.1.1
  * A simple and easy jQuery plugin for highlighting .NET stack traces
  * License : Apache 2
  * Author : https://elmah.io
@@ -35,7 +35,7 @@
                     repl: null
                 },
                 {
-                    find: new RegExp('(\\s*?)'+at_language+' ([^-:]*?)\\((.*?)\\)', 'g'),
+                    find: new RegExp('(\\s)'+at_language+' ([^-:]*?)\\((.*?)\\)', 'g'),
                     repl: null
                 }
             ]
