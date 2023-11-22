@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="32px" height="24px" viewBox="0 0 32 24" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <title>flags/L/KN-SK - Saint Kitts and Nevis</title>
+    <defs>
+        <rect id="path-1" x="0" y="0" width="32" height="24"></rect>
+        <polygon id="path-3" points="4 4 4 28 36 4"></polygon>
+    </defs>
+    <g id="Symbols" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="flag">
+            <mask id="mask-2" fill="white">
+                <use xlink:href="#path-1"></use>
+            </mask>
+            <g id="mask"></g>
+            <g id="contents" mask="url(#mask-2)">
+                <g transform="translate(-4.000000, -4.000000)">
+                    <rect id="background" stroke="none" fill="#C51918" fill-rule="evenodd" x="4" y="4" width="32" height="24"></rect>
+                    <mask id="mask-4" fill="white">
+                        <use xlink:href="#path-3"></use>
+                    </mask>
+                    <use id="left" stroke="none" fill="#5EAA22" fill-rule="evenodd" xlink:href="#path-3"></use>
+                    <path d="M36.7142321,-0.662718617 L43.7207729,7.15347764 L5.35927388,32.7590424 L-1.64726692,24.9428462 L36.7142321,-0.662718617 Z" id="Path-14" stroke="#FFD018" stroke-width="2.5" fill="#272727" fill-rule="nonzero"></path>
+                    <polygon id="Star-5" stroke="none" fill="#F7FCFF" fill-rule="evenodd" transform="translate(15.180128, 19.283041) rotate(-29.000000) translate(-15.180128, -19.283041) " points="15.1819222 21.1537195 13.3112508 22.2830411 13.7379391 20.0792828 12.1801278 18.4299864 14.2894916 18.3408076 15.1819222 16.2830411 16.0743528 18.3408076 18.1801278 18.3408076 16.6259052 20.0792828 17.0938183 22.2830411"></polygon>
+                    <polygon id="Star-5" stroke="none" fill="#F7FCFF" fill-rule="evenodd" transform="translate(25.180128, 12.729879) rotate(-29.000000) translate(-25.180128, -12.729879) " points="25.1819222 14.6005573 23.3112508 15.729879 23.7379391 13.5261206 22.1801278 11.8768242 24.2894916 11.7876455 25.1819222 9.72987895 26.0743528 11.7876455 28.1801278 11.7876455 26.6259052 13.5261206 27.0938183 15.729879"></polygon>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

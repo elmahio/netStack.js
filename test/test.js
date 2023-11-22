@@ -93,5 +93,19 @@ describe('netstack.js', function() {
                 assert.equal(stringStack, $(stackElementRU).html());
             });
         });
+
+        describe('> Chinese', function() {
+            const elementCN = $('body').find('.stacktrace-cn')[0];
+            const stackElementCN = $(elementCN).netStack({ prettyprint: true });
+            const languageCN = stackElementCN.getLanguage();
+            const stringStack = "System.Exception: Could not load file or assembly 'netstandard, Version=2.1.0.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51'. 系统找不到指定的文件。\n   在 <span class=\"st-frame\"><span class=\"st-type\">System.Runtime.ExceptionServices.ExceptionDispatchInfo</span>.<span class=\"st-method\">Throw</span><span class=\"st-frame-params\">()</span></span>\n   在 <span class=\"st-frame\"><span class=\"st-type\">System.Runtime.CompilerServices.TaskAwaiter</span>.<span class=\"st-method\">HandleNonSuccessAndDebuggerNotification</span><span class=\"st-frame-params\">(<span class=\"st-param-type\">Task</span> <span class=\"st-param-name\">task</span>)</span></span>\n   在 <span class=\"st-frame\"><span class=\"st-type\">ClrCustomVisualizerVSHost.VisualizerTargetInternal.<span>&lt;</span>RequestDataAsync<span>&gt;</span>d__10</span>.<span class=\"st-method\">MoveNext</span><span class=\"st-frame-params\">()</span></span> \n   --- 引发异常的上一位置中堆栈跟踪的末尾 ---\n   在 <span class=\"st-frame\"><span class=\"st-type\">System.Runtime.ExceptionServices.ExceptionDispatchInfo</span>.<span class=\"st-method\">Throw</span><span class=\"st-frame-params\">()</span></span>\n   在 <span class=\"st-frame\"><span class=\"st-type\">System.Runtime.CompilerServices.TaskAwaiter</span>.<span class=\"st-method\">HandleNonSuccessAndDebuggerNotification</span><span class=\"st-frame-params\">(<span class=\"st-param-type\">Task</span> <span class=\"st-param-name\">task</span>)</span></span>\n   在 <span class=\"st-frame\"><span class=\"st-type\">Microsoft.VisualStudio.OutOfProcessVisualizers.VisualizerTarget.<span>&lt;</span>RequestDataAsync<span>&gt;</span>d__10</span>.<span class=\"st-method\">MoveNext</span><span class=\"st-frame-params\">()</span></span>";
+
+            it('-> recognize language', function() {
+                assert.equal('chinese', languageCN);
+            });
+            it('-> create HTML', function() {
+                assert.equal(stringStack, $(stackElementCN).html());
+            });
+        });
     });
 });

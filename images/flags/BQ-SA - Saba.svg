@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="32px" height="24px" viewBox="0 0 32 24" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <title>flags/L/BQ-SA - Saba</title>
+    <defs>
+        <rect id="path-1" x="0" y="0" width="32" height="24"></rect>
+    </defs>
+    <g id="Symbols" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="flag">
+            <mask id="mask-2" fill="white">
+                <use xlink:href="#path-1"></use>
+            </mask>
+            <g id="mask"></g>
+            <g id="contents" mask="url(#mask-2)">
+                <polygon id="bg" fill="#FFFFFF" points="0 0 32 0 32 24 0 24"></polygon>
+                <polygon id="Path-448" fill="#F00000" points="0 11.664 0 0 16 0"></polygon>
+                <polygon id="Path-448" fill="#F00000" transform="translate(24.000000, 5.832000) scale(-1, 1) translate(-24.000000, -5.832000) " points="16 11.664 16 0 32 0"></polygon>
+                <polygon id="Path-448" fill="#00268D" transform="translate(8.000000, 17.832000) scale(1, -1) translate(-8.000000, -17.832000) " points="0 24 0 11.664 16 11.664"></polygon>
+                <polygon id="Path-448" fill="#00268D" transform="translate(24.000000, 18.000000) scale(-1, -1) translate(-24.000000, -18.000000) " points="16 24.336 16 11.664 32 12"></polygon>
+                <polygon id="Star" fill="#FEDA00" points="15.7139818 14.2562679 12.196534 16.7632836 13.4872686 12.6220163 10 10.0869951 14.3445707 10.0869951 15.7139818 6 17.1654835 10.0869951 21.3917607 10.0869951 17.9348572 12.6220163 19.2488779 16.7632836"></polygon>
+            </g>
+        </g>
+    </g>
+</svg>

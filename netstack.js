@@ -68,7 +68,8 @@
             { name: 'english', at: 'at', in: 'in', line: 'line' },
             { name: 'danish', at: 'ved', in: 'i', line: 'linje' },
             { name: 'german', at: 'bei', in: 'in', line: 'Zeile' },
-            { name: 'russian', at: 'в', in: 'в', line: 'строка' }
+            { name: 'russian', at: 'в', in: 'в', line: 'строка' },
+            { name: 'chinese', at: '在', in: '位置', line: '行号' }
         ];
 
         return this.each(function() {
@@ -88,7 +89,8 @@
                     var english = new RegExp('(\\s+)at .*\\)'),
                         danish = new RegExp('(\\s+)ved .*\\)'),
                         german = new RegExp('(\\s+)bei .*\\)'),
-                        russian = new RegExp('(\\s+)в .*\\)');
+                        russian = new RegExp('(\\s+)в .*\\)'),
+                        chinese = new RegExp('(\\s+)在 .*\\)');
 
                     if(english.test(lines[i])) {
                         lang = 'english';
@@ -98,6 +100,8 @@
                         lang = 'german';
                     } else if (russian.test(lines[i])) {
                         lang = 'russian';
+                    } else if (chinese.test(lines[i])) {
+                        lang = 'chinese';
                     }
                 }
             }
