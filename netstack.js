@@ -19,7 +19,11 @@
 }(typeof self !== 'undefined' ? self : this, function() {
 
     function netStack(element, options) {
-        this.element = element;
+        if (typeof document !== 'undefined') {
+            this.element = document.querySelector(element);
+        } else {
+            throw new Error('netStack requires a DOM environment');
+        }
         
         // Default values for classes
         this.settings = extend({

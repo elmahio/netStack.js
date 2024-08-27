@@ -16,12 +16,12 @@ A simple and easy JavaScript library for highlighting .NET stack traces
 
 #### Initialization
 ```javascript
-const stack = new netStack(document.querySelector('.stacktrace'));
+const stack = new netStack('.stacktrace');
 ```
 
 #### Default values for classes
 ```javascript
-const stack = new netStack(document.querySelector('.stacktrace'), {
+const stack = new netStack('.stacktrace', {
     frame: 'st-frame',
     type: 'st-type',
     method: 'st-method',
@@ -38,7 +38,7 @@ const stack = new netStack(document.querySelector('.stacktrace'), {
 Default: false. 
 Pretty prints your stacktrace.
 ```javascript
-const stack = new netStack(document.querySelector('.stacktrace'), {
+const stack = new netStack('.stacktrace', {
     prettyprint: true
 });
 ```
