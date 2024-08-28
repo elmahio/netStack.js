@@ -15,8 +15,14 @@ A simple and easy JavaScript library for highlighting .NET stack traces
 [Stack Trace Formatter - Online pretty print of .NET stack traces](https://elmah.io/tools/stack-trace-formatter/)
 
 #### Initialization
+Using a string that represents a CSS selector:
 ```javascript
 const stack = new netStack('.stacktrace');
+```
+Passing an HTMLElement object:
+```javascript
+const stackElement = document.querySelector('.stacktrace');
+const stack = new netStack(stackElement);
 ```
 
 #### Default values for classes

@@ -20,7 +20,13 @@
 
     function netStack(element, options) {
         if (typeof document !== 'undefined') {
-            this.element = document.querySelector(element);
+            if (typeof element === 'string') {
+                this.element = document.querySelector(element);
+            } else if (element instanceof HTMLElement) {
+                this.element = element;
+            } else {
+                throw new Error('The element parameter must be a selector string or an HTMLElement.');
+            }
         } else {
             throw new Error('netStack requires a DOM environment');
         }
