@@ -76,7 +76,9 @@
     };
 
     netStack.prototype.replacer = function(args, at_language) {
-        if (args[0].substr(0).match(/(-{3})/)) {
+        if (args[0].substring(0).match(/(-{3}&gt;)/)) {
+            return '\r\n ' + args[0];
+        } else if (args[0].substring(0).match(/(-{3})/)) {
             return '\r\n   ' + args[0];
         } else {
             return '\r\n   ' + at_language + ' ' + args[2] + '(' + args[3] + ')';
@@ -86,6 +88,10 @@
     netStack.prototype.formatException = function(exceptionMessage, at_language) {
         var result = exceptionMessage || '';
         var searchReplaces = [
+            {
+                find: new RegExp('(-{3}&gt;\\s)(.*?)(?=\\s-{3}|(\\s)+' + at_language + ')', 'g'),
+                repl: null
+            },
             {
                 find: /(-{3}\s)(.*?)(-{3})/gm,
                 repl: null
@@ -158,7 +164,7 @@
                 var regFrame = new RegExp('(\\S*)' + selectedLanguage.at + ' .*?\\)'),
                     partsFrame = String(regFrame.exec(lines[i]));
 
-                if (partsFrame.substr(partsFrame.length - 1) == ',') {
+                if (partsFrame.substring(partsFrame.length - 1) == ',') {
                     partsFrame = partsFrame.slice(0, -1);
                 }
 
@@ -198,8 +204,9 @@
                 var newPartsFrame = partsFrame.replace(partsParamList, stringParam).replace(partsTypeMethod, stringTypeMethod);
 
                 // Line
-                var regLine = new RegExp('\\b:' + selectedLanguage.line + '.*'),
+                var regLine = new RegExp('\\b:' + selectedLanguage.line + ' \\d+'),
                     partsLine = String(regLine.exec(lines[i]));
+
                 partsLine = partsLine.replace(':', '').trim();
 
                 var fileLi = li.replace(selectedLanguage.at + " " + partsFrame, '').trim();
@@ -208,7 +215,7 @@
                 var regFile = new RegExp(selectedLanguage.in + '\\s.*$', 'm'),
                     partsFile = String(regFile.exec(fileLi));
 
-                partsFile = partsFile.replace(selectedLanguage.in + ' ', '').replace(':' + partsLine, '');
+                partsFile = partsFile.replace(selectedLanguage.in + ' ', '').replace(':' + partsLine, '').replace('&lt;---', '');
 
                 li = li.replace(partsFrame, '<span class="' + this.settings.frame + '">' + newPartsFrame + '</span>')
                     .replace(partsFile, '<span class="' + this.settings.file + '">' + partsFile + '</span>')
