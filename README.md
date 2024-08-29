@@ -4,7 +4,7 @@
 ![Tests](https://github.com/elmahio/netstack.js/actions/workflows/test.yml/badge.svg)
 
 
-A simple and easy jQuery plugin for highlighting .NET stack traces
+A simple and easy JavaScript library for highlighting .NET stack traces
 
 #### Stacktrace - Language support
 [![English](images/flags/US%20-%20United%20States.svg)](#) [![Danish](images/flags/DK%20-%20Denmark.svg)](#) [![German](images/flags/DE%20-%20Germany.svg)](#) [![Russian](images/flags/RU%20-%20Russian%20Federation.svg)](#) [![Chinese](images/flags/CN%20-%20China.svg)](#)
@@ -15,13 +15,19 @@ A simple and easy jQuery plugin for highlighting .NET stack traces
 [Stack Trace Formatter - Online pretty print of .NET stack traces](https://elmah.io/tools/stack-trace-formatter/)
 
 #### Initialization
+Using a string that represents a CSS selector:
 ```javascript
-$('.stacktrace').netStack();
+const stack = new netStack('.stacktrace');
+```
+Passing an HTMLElement object:
+```javascript
+const stackElement = document.querySelector('.stacktrace');
+const stack = new netStack(stackElement);
 ```
 
 #### Default values for classes
 ```javascript
-$('.stacktrace').netStack({
+const stack = new netStack('.stacktrace', {
     frame: 'st-frame',
     type: 'st-type',
     method: 'st-method',
@@ -38,7 +44,7 @@ $('.stacktrace').netStack({
 Default: false. 
 Pretty prints your stacktrace.
 ```javascript
-$('.stacktrace').netStack({
+const stack = new netStack('.stacktrace', {
     prettyprint: true
 });
 ```
