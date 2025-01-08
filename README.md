@@ -7,7 +7,7 @@
 A simple and easy JavaScript library for highlighting .NET stack traces
 
 #### Stacktrace - Language support
-[![English](images/flags/US%20-%20United%20States.svg)](#) [![Danish](images/flags/DK%20-%20Denmark.svg)](#) [![German](images/flags/DE%20-%20Germany.svg)](#) [![Russian](images/flags/RU%20-%20Russian%20Federation.svg)](#) [![Chinese](images/flags/CN%20-%20China.svg)](#)
+[![English](images/flags/US%20-%20United%20States.svg)](#) [![Danish](images/flags/DK%20-%20Denmark.svg)](#) [![German](images/flags/DE%20-%20Germany.svg)](#) [![Spanish](images/flags/ES%20-%20Spain.svg)](#) [![Russian](images/flags/RU%20-%20Russian%20Federation.svg)](#) [![Chinese](images/flags/CN%20-%20China.svg)](#)
 
 #### Demo
 [![netStack.js - demo](images/example.jpg)](https://elmah.io/tools/stack-trace-formatter/)

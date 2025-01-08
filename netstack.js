@@ -48,6 +48,7 @@
             { name: 'english', at: 'at', in: 'in', line: 'line' },
             { name: 'danish', at: 'ved', in: 'i', line: 'linje' },
             { name: 'german', at: 'bei', in: 'in', line: 'Zeile' },
+            { name: 'spanish', at: 'en', in: 'en', line: 'línea' },
             { name: 'russian', at: 'в', in: 'в', line: 'строка' },
             { name: 'chinese', at: '在', in: '位置', line: '行号' }
         ];
@@ -130,6 +131,7 @@
                     english: /\s+at .*\)/,
                     danish: /\s+ved .*\)/,
                     german: /\s+bei .*\)/,
+                    spanish: /\s+en .*\)/,
                     russian: /\s+в .*\)/,
                     chinese: /\s+在 .*\)/
                 };
