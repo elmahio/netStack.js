@@ -57,7 +57,7 @@ const stack = new netStack('.stacktrace', {
 });
 ```
 
-#### Ready to go css
+#### Ready to go CSS
 ```css
 pre, code {background-color:#333; color: #ffffff;}
 .st-type {color: #0a8472; font-weight: bolder;}
