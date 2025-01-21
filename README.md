@@ -48,6 +48,14 @@ const stack = new netStack('.stacktrace', {
     prettyprint: true
 });
 ```
+##### multilanguage: boolean
+Default: false. 
+Find multiple languages and render them accordingly.
+```javascript
+const stack = new netStack('.stacktrace', {
+    multilanguage: true
+});
+```
 
 #### Ready to go css
 ```css

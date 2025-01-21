@@ -1,6 +1,6 @@
 {
   "name": "netstack.js",
-  "version": "2.1.0",
+  "version": "2.1.1",
   "description": "A simple and easy JavaScript library for highlighting .NET stack traces",
   "main": "netstack.js",
   "scripts": {
