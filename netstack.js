@@ -159,21 +159,6 @@
         // look for the language(s) in the stack trace
         lang = this.detectLanguagesInOrder(lines, languagesRegex);
 
-        // if (this.settings.multilanguage) {
-        //     lang = this.detectLanguagesInOrder(lines, languagesRegex);
-        // } else {
-        //     for (var i = 0; i < lines.length; ++i) {
-        //         if (lang === '') {
-        //             for (var key in languagesRegex) {
-        //                 if (languagesRegex[key].test(lines[i])) {
-        //                     lang = key;
-        //                     break;
-        //                 }
-        //             }
-        //         }
-        //     }
-        // }
-
         if (lang === '') return;
 
         // if multiline option is true, check if the language is the same for all lines
