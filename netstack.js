@@ -34,7 +34,6 @@
         // Default values for classes
         this.settings = extend({
             prettyprint: false,
-            multilanguage: false,
             frame: 'st-frame',
             type: 'st-type',
             method: 'st-method',
@@ -158,20 +157,22 @@
         };
 
         // look for the language(s) in the stack trace
-        if (this.settings.multilanguage) {
-            lang = this.detectLanguagesInOrder(lines, languagesRegex);
-        } else {
-            for (var i = 0; i < lines.length; ++i) {
-                if (lang === '') {
-                    for (var key in languagesRegex) {
-                        if (languagesRegex[key].test(lines[i])) {
-                            lang = key;
-                            break;
-                        }
-                    }
-                }
-            }
-        }
+        lang = this.detectLanguagesInOrder(lines, languagesRegex);
+
+        // if (this.settings.multilanguage) {
+        //     lang = this.detectLanguagesInOrder(lines, languagesRegex);
+        // } else {
+        //     for (var i = 0; i < lines.length; ++i) {
+        //         if (lang === '') {
+        //             for (var key in languagesRegex) {
+        //                 if (languagesRegex[key].test(lines[i])) {
+        //                     lang = key;
+        //                     break;
+        //                 }
+        //             }
+        //         }
+        //     }
+        // }
 
         if (lang === '') return;
 
