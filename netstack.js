@@ -159,7 +159,8 @@
         // look for the language(s) in the stack trace
         lang = this.detectLanguagesInOrder(lines, languagesRegex);
 
-        if (lang === '') return;
+        // if no language is found, return
+        if (lang.length === 0) return;
 
         // if multiline option is true, check if the language is the same for all lines
         if (typeof lang === 'object') {
