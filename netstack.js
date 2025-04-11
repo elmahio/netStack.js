@@ -141,7 +141,7 @@
 
     netStack.prototype.init = function() {
         // Get the stacktrace, sanitize it, and split it into lines
-        var stacktrace = this.element.textContent,
+        var stacktrace = this.element.textContent.trim(), // trim empty spaces and lines before and after stacktrace
             sanitizedStack = stacktrace.replace(/</g, '&lt;').replace(/>/g, '&gt;'),
             lines = sanitizedStack.split('\n'),
             lang = '',
@@ -200,9 +200,6 @@
         if (Array.isArray(selectedLanguage)) {
             var langContor = 0;
         }
-
-        // Trim empty lines
-        lines = lines.filter(line => line.trim() !== '');
 
         for (var i = 0; i < lines.length; ++i) {
             var li = lines[i],
