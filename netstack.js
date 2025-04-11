@@ -201,6 +201,9 @@
             var langContor = 0;
         }
 
+        // Trim empty lines
+        lines = lines.filter(line => line.trim() !== '');
+
         for (var i = 0; i < lines.length; ++i) {
             var li = lines[i],
                 hli = new RegExp('(\\S*)' + selectedLanguage.at + ' .*\\)'),
