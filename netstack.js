@@ -100,7 +100,7 @@
                 repl: null
             },
             {
-                find: new RegExp('(\\s)' + at_language + ' ([^-:]*?)\\((.*?)\\)', 'g'),
+                find: new RegExp('(\\s)' + at_language + ' (?!INNER JOIN|DELETE|SELECT|FROM|WHERE|INSERT|UPDATE)([^-:]*?)\\((.*?)\\)', 'g'),
                 repl: null
             }
         ];
@@ -148,12 +148,12 @@
             clone = '';
 
         var languagesRegex = { 
-            english: /\s+at .*?\)/g,
-            danish: /\s+ved .*?\)/g,
-            german: /\s+bei .*?\)/g,
-            spanish: /\s+en .*?\)/g,
-            russian: /\s+в .*?\)/g,
-            chinese: /\s+在 .*?\)/g
+            english: /\s+at \S+\(.*?\)/g,
+            danish: /\s+ved \S+\(.*?\)/g,
+            german: /\s+bei \S+\(.*?\)/g,
+            spanish: /\s+en \S+\(.*?\)/g,
+            russian: /\s+в \S+\(.*?\)/g,
+            chinese: /\s+在 \S+\(.*?\)/g
         };
 
         // look for the language(s) in the stack trace
