@@ -18,6 +18,10 @@
     }
 }(typeof self !== 'undefined' ? self : this, function() {
 
+    // Prevent SQL keywords
+    var sqlKeywords = "INNER JOIN|DELETE|SELECT|FROM|WHERE|INSERT|UPDATE";
+    var preventSQL = `(?!${sqlKeywords})`;
+
     function netStack(element, options) {
         if (typeof document !== 'undefined') {
             if (typeof element === 'string') {
@@ -100,7 +104,7 @@
                 repl: null
             },
             {
-                find: new RegExp('(\\s)' + at_language + ' (?!INNER JOIN|DELETE|SELECT|FROM|WHERE|INSERT|UPDATE)([^-:]*?)\\((.*?)\\)', 'g'),
+                find: new RegExp('(\\s)' + at_language + ' ' + preventSQL + '([^-:)]*?)\\((.*?)\\)', 'g'),
                 repl: null
             }
         ];
@@ -147,13 +151,13 @@
             lang = '',
             clone = '';
 
-        var languagesRegex = { 
-            english: /\s+at \S+\(.*?\)/g,
-            danish: /\s+ved \S+\(.*?\)/g,
-            german: /\s+bei \S+\(.*?\)/g,
-            spanish: /\s+en \S+\(.*?\)/g,
-            russian: /\s+в \S+\(.*?\)/g,
-            chinese: /\s+在 \S+\(.*?\)/g
+        const languagesRegex = {
+            english: new RegExp(`\\s+at ${preventSQL}([^-:)]*?)\\(.*?\\)`, "g"),
+            danish:  new RegExp(`\\s+ved ${preventSQL}([^-:)]*?)\\(.*?\\)`, "g"),
+            german:  new RegExp(`\\s+bei ${preventSQL}([^-:)]*?)\\(.*?\\)`, "g"),
+            spanish: new RegExp(`\\s+en ${preventSQL}([^-:)]*?)\\(.*?\\)`, "g"),
+            russian: new RegExp(`\\s+в ${preventSQL}([^-:)]*?)\\(.*?\\)`, "g"),
+            chinese: new RegExp(`\\s+在 ${preventSQL}([^-:)]*?)\\(.*?\\)`, "g")
         };
 
         // look for the language(s) in the stack trace
@@ -213,9 +217,8 @@
             }
 
             if (hli.test(lines[i])) {
-                
                 // Frame
-                var regFrame = new RegExp('(\\S*)' + languageSet.at + ' .*?\\)'),
+                var regFrame = new RegExp('(\\S*)' + languageSet.at + ' ' + preventSQL + '[^-:)]*?\\(.*?\\)'),
                     partsFrame = String(regFrame.exec(lines[i]));
 
                 if (partsFrame.substring(partsFrame.length - 1) == ',') {
