@@ -1,5 +1,5 @@
 /*!
- * netStack v2.1.3
+ * netStack v2.1.4
  * A simple and easy JavaScript library for highlighting .NET stack traces
  * License: Apache 2
  * Author: https://elmah.io
