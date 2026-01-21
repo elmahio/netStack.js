@@ -104,7 +104,7 @@
                 repl: null
             },
             {
-                find: new RegExp('(\\s)' + at_language + ' ' + preventSQL + '([^-:)]*?)\\((.*?)\\)', 'g'),
+                find: new RegExp('(\\s)' + at_language + ' ' + preventSQL + '([^-:)\\s]+?)\\((.*?)\\)', 'g'),
                 repl: null
             }
         ];
@@ -152,12 +152,12 @@
             clone = '';
 
         const languagesRegex = {
-            english: new RegExp(`\\s+at ${preventSQL}([^-:)]*?)\\(.*?\\)`, "g"),
-            danish:  new RegExp(`\\s+ved ${preventSQL}([^-:)]*?)\\(.*?\\)`, "g"),
-            german:  new RegExp(`\\s+bei ${preventSQL}([^-:)]*?)\\(.*?\\)`, "g"),
-            spanish: new RegExp(`\\s+en ${preventSQL}([^-:)]*?)\\(.*?\\)`, "g"),
-            russian: new RegExp(`\\s+в ${preventSQL}([^-:)]*?)\\(.*?\\)`, "g"),
-            chinese: new RegExp(`\\s+在 ${preventSQL}([^-:)]*?)\\(.*?\\)`, "g")
+            english: new RegExp(`\\s+at ${preventSQL}([^-:)\\s]+?)\\(.*?\\)`, "g"),
+            danish:  new RegExp(`\\s+ved ${preventSQL}([^-:)\\s]+?)\\(.*?\\)`, "g"),
+            german:  new RegExp(`\\s+bei ${preventSQL}([^-:)\\s]+?)\\(.*?\\)`, "g"),
+            spanish: new RegExp(`\\s+en ${preventSQL}([^-:)\\s]+?)\\(.*?\\)`, "g"),
+            russian: new RegExp(`\\s+в ${preventSQL}([^-:)\\s]+?)\\(.*?\\)`, "g"),
+            chinese: new RegExp(`\\s+在 ${preventSQL}([^-:)\\s]+?)\\(.*?\\)`, "g")
         };
 
         // look for the language(s) in the stack trace
@@ -218,7 +218,7 @@
 
             if (hli.test(lines[i])) {
                 // Frame
-                var regFrame = new RegExp('(\\S*)' + languageSet.at + ' ' + preventSQL + '[^-:)]*?\\(.*?\\)'),
+                var regFrame = new RegExp('(\\S*)' + languageSet.at + ' ' + preventSQL + '[^-:)\\s]+?\\(.*?\\)'),
                     partsFrame = String(regFrame.exec(lines[i]));
 
                 if (partsFrame.substring(partsFrame.length - 1) == ',') {
